@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View All Reviews</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            height: 100vh;
+            padding-top: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .review {
+            background-color: #f2f2f2;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        .review h3 {
+            margin: 0;
+            color: #333;
+        }
+        .review p {
+            margin: 5px 0;
+            color: #555;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>All Game Reviews</h1>
+
+        <!-- Display reviews here -->
+        <div id="reviews-container">
+            <!-- Reviews will be inserted here dynamically -->
+        </div>
+
+        <!-- Button to go back -->
+        <button onclick="window.location.href='index.html'">Back to Home</button>
+    </div>
+
+    <script>
+        // Function to load reviews from localStorage and display them
+        function loadReviews() {
+            const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+
+            const reviewsContainer = document.getElementById("reviews-container");
+            reviewsContainer.innerHTML = ''; // Clear existing reviews
+
+            // Display each review
+            if (reviews.length === 0) {
+                reviewsContainer.innerHTML = "<p>No reviews yet. Be the first to leave a review!</p>";
+            } else {
+                reviews.forEach((review) => {
+                    const reviewDiv = document.createElement("div");
+                    reviewDiv.classList.add("review");
+
+                    const gameName = document.createElement("h3");
+                    gameName.textContent = review.gameName;
+
+                    const reviewText = document.createElement("p");
+                    reviewText.textContent = review.reviewText;
+
+                    reviewDiv.appendChild(gameName);
+                    reviewDiv.appendChild(reviewText);
+
+                    reviewsContainer.appendChild(reviewDiv);
+                });
+            }
+        }
+
+        // Load reviews when the page loads
+        window.onload = loadReviews;
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://github.com/ankittangariya/htmlproject/blob/main/wallpaperflare.com_wallpaper%20(1).jpg'); /* Local image path */
+    background-size: cover; /* Make the background image cover the full viewport */
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff; /* Make text white for better contrast on dark background */
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Fallback for dark background if image fails */
+body {
+    background-color: #333; /* Dark fallback color */
+}
+
+/* Container styling */
+.container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7); /* Darker semi-transparent background */
+    padding: 60px 40px; /* Increased padding */
+    border-radius: 20px; /* Slightly more rounded corners */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6); /* Stronger box shadow */
+    width: 80%;
+    max-width: 800px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Heading styles */
+h1 {
+    color: #fff;
+    font-size: 5em; /* Much larger heading */
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-family: 'Helvetica Neue', sans-serif; /* Modern font style */
+    font-weight: bold; /* Bold text */
+}
+
+/* Paragraph styles */
+p {
+    color: #f0f0f0;
+    font-size: 2.5em; /* Larger text */
+    margin-bottom: 40px;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.5;
+}
+
+/* Button styling */
+button {
+    padding: 20px 40px; /* Increased padding */
+    margin: 15px 25px;
+    font-size: 2em; /* Larger button text */
+    cursor: pointer;
+    border: none;
+    border-radius: 50px; /* Fully rounded corners for buttons */
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    max-width: 320px; /* Wider buttons */
+    text-align: center;
+    font-weight: bold; /* Bold text on buttons */
+}
+
+/* Hover effect for buttons */
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-4px);
+}
+
+/* Output text styling */
+#output {
+    margin-top: 30px;
+    font-size: 2.5em; /* Larger output text */
+    color: #ff9900; /* Orange color for output text */
+    font-family: 'Arial', sans-serif;
+    font-weight: bold; /* Bold text for output */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 4em;
+    }
+
+    p {
+        font-size: 2em;
+    }
+
+    button {
+        width: 90%;
+        max-width: 250px;
+    }
+}

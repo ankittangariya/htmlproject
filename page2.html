@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOVIE</title>
+    <style>     
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffcccc;
+            position: relative;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #555;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* CSS for positioning the 'Back to Home' button at the top left */
+        .back-home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff5722;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .back-home-button:hover {
+            background-color: #e64a19;
+        }
+
+        /* Star Rating Styles */
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .stars input {
+            display: none;
+        }
+        .stars label {
+            font-size: 30px;
+            color: #ccc;
+            cursor: pointer;
+        }
+        .stars input:checked ~ label,
+        .stars label:hover,
+        .stars label:hover ~ label {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 'Back to Home' Button -->
+    <button class="back-home-button" onclick="window.location.href='index.html'">Back to Home</button>
+
+    <div class="container">
+        <h1>MOVIE REVIEWS</h1>
+        <p>WE APPRECIATE YOU LEAVING A REVIEW.</p>
+
+        <!-- Button 1: Leave Reviews -->
+        <button onclick="window.location.href='mreview.html'">Leave Reviews</button>
+
+        <!-- Button 2: Read Reviews (Redirects to IMDb) -->
+        <button onclick="searchIMDbReview()">Read Reviews</button>
+
+        <!-- Button 3: Video Review (YouTube Search) -->
+        <button onclick="searchYouTubeReview()">Video Review</button>
+
+        <!-- Star Rating Section -->
+        <div class="stars">
+            <input type="radio" name="rating" id="star5" value="5">
+            <label for="star5">&#9733;</label>
+            <input type="radio" name="rating" id="star4" value="4">
+            <label for="star4">&#9733;</label>
+            <input type="radio" name="rating" id="star3" value="3">
+            <label for="star3">&#9733;</label>
+            <input type="radio" name="rating" id="star2" value="2">
+            <label for="star2">&#9733;</label>
+            <input type="radio" name="rating" id="star1" value="1">
+            <label for="star1">&#9733;</label>
+        </div>
+
+        <!-- Submit Rating Button -->
+        <button onclick="submitRating()">Submit Rating</button>
+        
+        <p id="rating-result"></p>
+    </div>
+
+    <script>
+        // Retrieve the stored movie name from localStorage
+        const movieName = localStorage.getItem('movieName');
+
+        // Function to search for the movie reviews on IMDb
+        function searchIMDbReview() {
+            if (movieName) {
+                // Construct the IMDb search URL with the movie name
+                const imdbUrl = `https://www.imdb.com/find?q=${encodeURIComponent(movieName)}&ref_=nv_sr_sm`;
+                window.location.href = imdbUrl;
+            } else {
+                alert('Movie name not found. Please search for a movie first.');
+            }
+        }
+
+        // Function to search for the movie on YouTube
+        function searchYouTubeReview() {
+            if (movieName) {
+                // Construct the YouTube search URL with the movie name
+                const youtubeUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(movieName + ' review')}`;
+                window.location.href = youtubeUrl;
+            } else {
+                alert('Movie name not found. Please search for a movie first.');
+            }
+        }
+
+        // Function to handle rating submission
+        function submitRating() {
+            const rating = document.querySelector('input[name="rating"]:checked');
+            if (rating) {
+                const ratingValue = rating.value;
+                document.getElementById('rating-result').textContent = `You rated the movie: ${ratingValue} star(s)`;
+            } else {
+                document.getElementById('rating-result').textContent = "Please select a rating before submitting.";
+            }
+        }
+
+        // Optional: If you want to display the movie name on the page
+        if (movieName) {
+            document.getElementById('movie-name-display').textContent = "You searched for: " + movieName.charAt(0).toUpperCase() + movieName.slice(1);
+        } else {
+            document.getElementById('movie-name-display').textContent = "No movie selected.";
+        }
+    </script>
+
+</body>
+</html>
