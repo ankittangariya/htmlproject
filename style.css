@@ -7,26 +7,25 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('https://github.com/ankittangariya/htmlproject/blob/main/wallpaperflare.com_wallpaper%20(1).jpg'); /* Local image path */
-    background-size: cover; /* Make the background image cover the full viewport */
+    background-image: url('https://raw.githubusercontent.com/ankittangariya/htmlproject/main/wallpaperflare.com_wallpaper%20(1).jpg');
+    background-size: cover; 
     background-position: center;
     background-attachment: fixed;
-    color: #fff; /* Make text white for better contrast on dark background */
+    color: #fff;
     transition: background-color 0.3s ease-in-out;
 }
 
-/* Fallback for dark background if image fails */
 body {
-    background-color: #333; /* Dark fallback color */
+    background-color: #333; 
 }
 
 /* Container styling */
 .container {
     text-align: center;
-    background: rgba(0, 0, 0, 0.7); /* Darker semi-transparent background */
-    padding: 60px 40px; /* Increased padding */
-    border-radius: 20px; /* Slightly more rounded corners */
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6); /* Stronger box shadow */
+    background: rgba(0, 0, 0, 0.7);
+    padding: 60px 40px; 
+    border-radius: 20px; 
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6); 
     width: 80%;
     max-width: 800px;
     transition: transform 0.3s ease-in-out;
@@ -46,7 +45,7 @@ h1 {
 /* Paragraph styles */
 p {
     color: #f0f0f0;
-    font-size: 2.5em; /* Larger text */
+    font-size: 1.5em; /* Larger text */
     margin-bottom: 40px;
     font-family: 'Arial', sans-serif;
     line-height: 1.5;
@@ -78,10 +77,10 @@ button:hover {
 /* Output text styling */
 #output {
     margin-top: 30px;
-    font-size: 2.5em; /* Larger output text */
-    color: #ff9900; /* Orange color for output text */
+    font-size: 2.5em; 
+    color: #ff9900; 
     font-family: 'Arial', sans-serif;
-    font-weight: bold; /* Bold text for output */
+    font-weight: bold;
 }
 
 /* Responsive design */
@@ -99,3 +98,27 @@ button:hover {
         max-width: 250px;
     }
 }
+
+.audio-controls button {
+    background-color: #28a745; 
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 15px; 
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    width: 60px; 
+    height: 60px;
+}
+
+.audio-controls button#pause {
+    background-color: #dc3545;
+}
+
+.audio-controls button:hover {
+    transform: translateY(-2px);
+    opacity: 0.8;
+}
+
