@@ -1,0 +1,61 @@
+<!-- audio-player.html -->
+<div class="audio-controls">
+    <button id="play">
+        <i class="fas fa-play"></i> <!-- Play icon -->
+    </button>
+    <button id="pause">
+        <i class="fas fa-pause"></i> <!-- Pause icon -->
+    </button>
+</div>
+
+<audio id="background-audio" loop>
+    <source src="thick.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    const audio = document.getElementById('background-audio');
+    const playButton = document.getElementById('play');
+    const pauseButton = document.getElementById('pause');
+
+    playButton.addEventListener('click', () => {
+        audio.play();
+    });
+
+    pauseButton.addEventListener('click', () => {
+        audio.pause();
+    });
+</script>
+
+<style>
+    .audio-controls {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 100;
+        display: flex;
+        gap: 10px;
+    }
+
+    .audio-controls button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        padding: 15px;
+        font-size: 1.5em;
+        cursor: pointer;
+        width: 60px;
+        height: 60px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .audio-controls button#pause {
+        background-color: #dc3545;
+    }
+
+    .audio-controls button:hover {
+        transform: translateY(-2px);
+        opacity: 0.8;
+    }
+</style>
